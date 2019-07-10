@@ -1,0 +1,2586 @@
+  [1m[35m (595.1ms)[0m  [1m[35mCREATE DATABASE "contacts_api_development" ENCODING = 'unicode'[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (372.4ms)[0m  [1m[35mCREATE DATABASE "contacts_api_test" ENCODING = 'unicode'[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateContacts (20190709055056)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "cell_phone" character varying, "zip_code" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190709055056_create_contacts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190709055056"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-07-09 05:51:28.795281"], ["updated_at", "2019-07-09 05:51:28.795281"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateActivities (20190709055704)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "activities" ("id" bigserial primary key, "contact_id" bigint, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4f81fb35a0"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+)[0m
+  ↳ db/migrate/20190709055704_create_activities.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_activities_on_contact_id" ON "activities"  ("contact_id")[0m
+  ↳ db/migrate/20190709055704_create_activities.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190709055704"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Load (3.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Started GET "/" for ::1 at 2019-07-09 03:22:32 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contacts" for ::1 at 2019-07-09 03:22:38 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/contacts" for ::1 at 2019-07-09 03:24:55 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:24:57 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:24:58 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:25:16 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:25:16 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:25:24 -0300
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:25:25 -0300
+  
+ActionController::RoutingError (uninitialized constant ContactsController):
+  
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.4) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts" for ::1 at 2019-07-09 03:27:02 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 2.1ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (4.6ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Bill"], ["last_name", "Gates"], ["cell_phone", "1234567890"], ["zip_code", 30306], ["created_at", "2019-07-09 06:31:52.551100"], ["updated_at", "2019-07-09 06:31:52.551100"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/contacts" for ::1 at 2019-07-09 03:31:57 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/contacts" for ::1 at 2019-07-09 03:46:16 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 16ms (Views: 7.0ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/contacts/1" for ::1 at 2019-07-09 03:46:19 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:11
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contacts" for ::1 at 2019-07-09 03:46:23 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-07-09 10:15:44 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 13ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:16:02 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 28ms (Views: 16.1ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:16:18 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:16:52 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:16:56 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:18:09 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:18:53 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/contacts/1" for 127.0.0.1 at 2019-07-09 10:19:08 -0300
+Processing by ContactsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:38
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:39
+  [1m[36mContact Destroy (6.1ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/contacts_controller.rb:39
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:39
+Completed 204 No Content in 9ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-09 10:19:13 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Contact with 'id'=1):
+  
+app/controllers/contacts_controller.rb:10:in `show'
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:19:24 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:19:45 -0300
+Processing by ContactsController#create as JSON
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `contact_params' for #<ContactsController:0x007f91eb26d408>
+Did you mean?  contact_path):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:20:26 -0300
+Processing by ContactsController#create as JSON
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 3.3ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:20:57 -0300
+Processing by ContactsController#create as JSON
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:21:49 -0300
+Processing by ContactsController#create as JSON
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:23:28 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:23:41 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:24:08 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 204 No Content in 0ms (ActiveRecord: 2.6ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:25:12 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 204 No Content in 1ms (ActiveRecord: 2.8ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:25:42 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 204 No Content in 1ms (ActiveRecord: 2.2ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:26:43 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:27:01 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:27:23 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:28:20 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 5.7ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:29:19 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.4ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:30:52 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 3.3ms)
+
+
+  
+NameError (undefined local variable or method `contact_params' for #<ContactsController:0x007f91f0822fd8>
+Did you mean?  contact_path):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:31:11 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 201 Created in 1ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:33:15 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 4.1ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:35:35 -0300
+  
+ArgumentError (No association found for name `contacts'. Has it been defined yet?):
+  
+app/models/contact.rb:2:in `<class:Contact>'
+app/models/contact.rb:1:in `<main>'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:35:37 -0300
+  
+ArgumentError (No association found for name `contacts'. Has it been defined yet?):
+  
+app/models/contact.rb:2:in `<class:Contact>'
+app/models/contact.rb:1:in `<main>'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:36:36 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 2.9ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/contacts_controller.rb:16:in `create'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:38:57 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+Completed 201 Created in 13ms (Views: 0.2ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:39:09 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:40:47 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:16
+  [1m[36mContact Create (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Bill"], ["last_name", "Gates"], ["cell_phone", "1234567890"], ["zip_code", 30306], ["created_at", "2019-07-09 13:40:47.531144"], ["updated_at", "2019-07-09 13:40:47.531144"]]
+  ↳ app/controllers/contacts_controller.rb:16
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:16
+Completed 201 Created in 15ms (Views: 0.4ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:40:52 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:16
+  [1m[36mContact Create (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Bill"], ["last_name", "Gates"], ["cell_phone", "1234567890"], ["zip_code", 30306], ["created_at", "2019-07-09 13:40:52.073879"], ["updated_at", "2019-07-09 13:40:52.073879"]]
+  ↳ app/controllers/contacts_controller.rb:16
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:16
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:40:59 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/contacts/3" for 127.0.0.1 at 2019-07-09 10:47:43 -0300
+Processing by ContactsController#update as JSON
+  Parameters: {"id"=>"3", "first_name"=>"John", "last_name"=>"Malcovich", "cell_phone"=>"123456433", "zip_code"=>12345, "contact"=>{"id"=>"3", "first_name"=>"John", "last_name"=>"Malcovich", "cell_phone"=>"123456433", "zip_code"=>12345}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:27
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:29
+  [1m[36mContact Update (0.5ms)[0m  [1m[33mUPDATE "contacts" SET "first_name" = $1, "last_name" = $2, "cell_phone" = $3, "zip_code" = $4, "updated_at" = $5 WHERE "contacts"."id" = $6[0m  [["first_name", "John"], ["last_name", "Malcovich"], ["cell_phone", "123456433"], ["zip_code", 12345], ["updated_at", "2019-07-09 13:47:43.110145"], ["id", 3]]
+  ↳ app/controllers/contacts_controller.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:29
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:47:53 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:49:55 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[36mContact Create (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Bill"], ["last_name", "Gates"], ["cell_phone", "1234567890"], ["zip_code", 30306], ["created_at", "2019-07-09 13:49:55.520667"], ["updated_at", "2019-07-09 13:49:55.520667"]]
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:18
+Completed 201 Created in 13ms (Views: 0.5ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:50:02 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "lagwt_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/contacts_controller.rb:18
+Completed 422 Unprocessable Entity in 11ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:50:23 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 10:57:23 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:57:37 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "lagwt_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/contacts_controller.rb:18
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 10:57:45 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306, "contact"=>{"first_name"=>"Bill", "last_name"=>"Gates", "cell_phone"=>"1234567890", "zip_code"=>30306}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[36mContact Create (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Bill"], ["last_name", "Gates"], ["cell_phone", "1234567890"], ["zip_code", 30306], ["created_at", "2019-07-09 13:57:45.404135"], ["updated_at", "2019-07-09 13:57:45.404135"]]
+  ↳ app/controllers/contacts_controller.rb:18
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:18
+Completed 201 Created in 4ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2019-07-09 11:16:45 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contacts" for ::1 at 2019-07-09 11:16:48 -0300
+Processing by ContactsController#index as JSON
+  [1m[36mContact Load (0.9ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 25ms (Views: 13.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/contacts/3/activities" for ::1 at 2019-07-09 11:16:53 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/contacts/3/activities"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/contacts/1/activities" for 127.0.0.1 at 2019-07-09 11:31:25 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"gad", "contact_id"=>"1", "activity"=>{"description"=>"gad"}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 404 Not Found in 11ms (ActiveRecord: 7.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Contact with 'id'=1):
+  
+app/controllers/activities_controller.rb:11:in `create'
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 11:31:41 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"gad", "contact_id"=>"3", "activity"=>{"description"=>"gad"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:13
+  [1m[36mActivity Create (5.2ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "gad"], ["created_at", "2019-07-09 14:31:41.691967"], ["updated_at", "2019-07-09 14:31:41.691967"]]
+  ↳ app/controllers/activities_controller.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:13
+Completed 201 Created in 42ms (Views: 0.5ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 11:31:53 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/2/activities/1" for 127.0.0.1 at 2019-07-09 11:44:04 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"1", "activity"=>{}}
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/contacts/2/activities/1" for 127.0.0.1 at 2019-07-09 11:44:10 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"1", "activity"=>{}}
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/2/activities/1" for 127.0.0.1 at 2019-07-09 11:44:39 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 6.3ms)
+
+
+  
+NoMethodError (undefined method `find' for #<Contact:0x007f91eb1955a8>):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 11:44:46 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `find' for #<Contact:0x007f91f0842400>):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 11:44:49 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `find' for #<Contact:0x007f91eaa87bd0>):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 11:45:13 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/contacts/2/activities/1" for 127.0.0.1 at 2019-07-09 11:45:17 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Activity with 'id'=1 [WHERE "activities"."contact_id" = $1]):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 11:45:27 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/2/activities/1" for 127.0.0.1 at 2019-07-09 13:22:14 -0300
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 404 Not Found in 20ms (ActiveRecord: 12.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Activity with 'id'=1 [WHERE "activities"."contact_id" = $1]):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:22:18 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:22:31 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/contacts/3/activities/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:23:10 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/contacts/3/activities/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:23:36 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/contacts/3/activities/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:24:29 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 7.3ms)
+
+
+Started PATCH "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:24:37 -0300
+  
+ActionController::RoutingError (No route matches [PATCH] "/contacts/3/activities/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:24:41 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/contacts/3/activities/1"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started DELETE "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:28:33 -0300
+Processing by ActivitiesController#destroy as JSON
+  Parameters: {"description"=>"Swimming", "contact_id"=>"3", "id"=>"1", "activity"=>{"description"=>"Swimming"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:33
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:35
+  [1m[36mActivity Destroy (1.0ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/activities_controller.rb:35
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:35
+Completed 204 No Content in 35ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 13:28:37 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Activity with 'id'=1 [WHERE "activities"."contact_id" = $1]):
+  
+app/controllers/activities_controller.rb:5:in `show'
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 13:28:51 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Swimming", "contact_id"=>"3", "activity"=>{"description"=>"Swimming"}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:13
+  [1m[36mActivity Create (1.3ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "Swimming"], ["created_at", "2019-07-09 16:28:51.496407"], ["updated_at", "2019-07-09 16:28:51.496407"]]
+  ↳ app/controllers/activities_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:13
+Completed 201 Created in 8ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 13:28:59 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/contacts/3/activities"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:29:06 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:29:15 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/contacts/3/activities/2"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PUT "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:31:02 -0300
+Processing by ActivitiesController#update as JSON
+  Parameters: {"description"=>"Swimfsming", "contact_id"=>"3", "id"=>"2", "activity"=>{"description"=>"Swimfsming"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:22
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:22
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:24
+  [1m[36mActivity Update (0.7ms)[0m  [1m[33mUPDATE "activities" SET "description" = $1, "updated_at" = $2 WHERE "activities"."id" = $3[0m  [["description", "Swimfsming"], ["updated_at", "2019-07-09 16:31:02.970417"], ["id", 2]]
+  ↳ app/controllers/activities_controller.rb:24
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:24
+Completed 200 OK in 28ms (Views: 0.3ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:31:09 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:31:20 -0300
+Processing by ActivitiesController#update as JSON
+  Parameters: {"description"=>"Swimming", "contact_id"=>"3", "id"=>"2", "activity"=>{"description"=>"Swimming"}}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:22
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:24
+  [1m[36mActivity Update (0.3ms)[0m  [1m[33mUPDATE "activities" SET "description" = $1, "updated_at" = $2 WHERE "activities"."id" = $3[0m  [["description", "Swimming"], ["updated_at", "2019-07-09 16:31:21.001977"], ["id", 2]]
+  ↳ app/controllers/activities_controller.rb:24
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:24
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 13:31:24 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:5
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 13:45:59 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"3", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:17
+  [1m[36mActivity Create (0.7ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "Running"], ["created_at", "2019-07-09 16:45:59.325698"], ["updated_at", "2019-07-09 16:45:59.325698"]]
+  ↳ app/controllers/activities_controller.rb:17
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:17
+Completed 201 Created in 23ms (Views: 0.3ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:46:05 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Contact with 'id'=6):
+  
+app/controllers/activities_controller.rb:11:in `create'
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:49:00 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:49:33 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:49:56 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:50:29 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:14: syntax error, unexpected keyword_else, expecting '}'
+    else
+        ^):
+  
+app/controllers/activities_controller.rb:14: syntax error, unexpected keyword_else, expecting '}'
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:50:47 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 9ms (Views: 0.3ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/contacts/dg/activities" for 127.0.0.1 at 2019-07-09 13:50:58 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"dg", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:51:05 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Running", "contact_id"=>"6", "activity"=>{"description"=>"Running"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:11
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/contacts/6/activities" for 127.0.0.1 at 2019-07-09 13:51:30 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:48: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/activities_controller.rb:48: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/contacts/6/activities/1" for 127.0.0.1 at 2019-07-09 14:03:36 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"6", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:03:44 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+  [1m[36mActivity Load (2.1ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:55
+Completed 422 Unprocessable Entity in 16ms (Views: 0.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:03:48 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+  [1m[36mActivity Load (0.5ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:55
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/contacts/6/activities/2" for 127.0.0.1 at 2019-07-09 14:03:55 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"6", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contacts/6/activities/2" for 127.0.0.1 at 2019-07-09 14:11:19 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"6", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+Completed 422 Unprocessable Entity in 5ms (Views: 0.1ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:11:24 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+  [1m[36mActivity Load (0.6ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:55
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:11:30 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:51
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:55
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:12:13 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:6: syntax error, unexpected ':', expecting '}'
+    set_response { errors: "Contact ID does not exist" }
+                          ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:6: syntax error, unexpected '}', expecting keyword_end
+ "Contact ID does not exist" }, :unprocessable_entity if @co
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:7: syntax error, unexpected ':', expecting '}'
+    set_response { errors: "Activity ID does not exist" 
+                          ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:7: syntax error, unexpected '}', expecting keyword_end
+"Activity ID does not exist" }, :unprocessable_entity if @co
+                              ^):
+  
+app/controllers/activities_controller.rb:6: syntax error, unexpected ':', expecting '}'
+app/controllers/activities_controller.rb:6: syntax error, unexpected '}', expecting keyword_end
+app/controllers/activities_controller.rb:7: syntax error, unexpected ':', expecting '}'
+app/controllers/activities_controller.rb:7: syntax error, unexpected '}', expecting keyword_end
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:17:17 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/activities_controller.rb:65: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/activities_controller.rb:65: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:18:29 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:58
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 5.3ms)
+
+
+  
+NoMethodError (undefined method `<<' for nil:NilClass):
+  
+app/controllers/activities_controller.rb:59:in `set_activity'
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:18:50 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:58
+Completed 422 Unprocessable Entity in 22ms (Views: 0.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:19:17 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:58
+Completed 422 Unprocessable Entity in 17ms (Views: 0.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:20:02 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:58
+Completed 422 Unprocessable Entity in 14ms (Views: 0.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/contacts/6/activities/1" for 127.0.0.1 at 2019-07-09 14:20:11 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"6", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/7/activities/1" for 127.0.0.1 at 2019-07-09 14:20:19 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"7", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/7/activities/2" for 127.0.0.1 at 2019-07-09 14:20:22 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"7", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:20:29 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:58
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:22:10 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:24:21 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:59
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/contacts/5/activities/2" for 127.0.0.1 at 2019-07-09 14:24:27 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"5", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 5], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:59
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/contacts/4/activities/2" for 127.0.0.1 at 2019-07-09 14:24:33 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"4", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 4], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:59
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:24:38 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:59
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contacts/2/activities/2" for 127.0.0.1 at 2019-07-09 14:24:42 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:53
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:59
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/2" for 127.0.0.1 at 2019-07-09 14:24:49 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"2", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/2" for 127.0.0.1 at 2019-07-09 14:31:41 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"2", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:10
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/contacts/2/activities/2" for 127.0.0.1 at 2019-07-09 14:31:50 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:56
+  [1m[36mActivity Load (0.6ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:62
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.9ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/activities_controller.rb:70:in `set_error'
+Started GET "/contacts/2/activities/2" for 127.0.0.1 at 2019-07-09 14:38:40 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"2", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:54
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:60
+Completed 422 Unprocessable Entity in 13ms (Views: 0.1ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:38:46 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:54
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:60
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:38:50 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:54
+  [1m[36mActivity Load (0.5ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:60
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 14:42:18 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:54
+Completed 422 Unprocessable Entity in 23ms (Views: 0.2ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 14:42:22 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+  [1m[36mActivity Load (0.4ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:54
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 14:42:49 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Gambling", "contact_id"=>"3", "activity"=>{"description"=>"Gambling"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[36mActivity Create (1.5ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "Gambling"], ["created_at", "2019-07-09 17:42:49.361118"], ["updated_at", "2019-07-09 17:42:49.361118"]]
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:15
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/contacts/33/activities" for 127.0.0.1 at 2019-07-09 14:42:54 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Gambling", "contact_id"=>"33", "activity"=>{"description"=>"Gambling"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/contacts/33/activities" for 127.0.0.1 at 2019-07-09 15:06:45 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Gambgdling", "contact_id"=>"33", "activity"=>{"description"=>"Gambgdling"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+Completed 422 Unprocessable Entity in 6ms (Views: 0.1ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 15:06:50 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Gambgdling", "contact_id"=>"3", "activity"=>{"description"=>"Gambgdling"}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[36mActivity Create (0.8ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "Gambgdling"], ["created_at", "2019-07-09 18:06:50.565751"], ["updated_at", "2019-07-09 18:06:50.565751"]]
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:15
+Completed 201 Created in 25ms (Views: 0.4ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/contacts/3/activities" for 127.0.0.1 at 2019-07-09 15:07:42 -0300
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"Gambgdling", "contact_id"=>"3", "activity"=>{"description"=>"Gambgdling"}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[36mActivity Create (0.3ms)[0m  [1m[32mINSERT INTO "activities" ("contact_id", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["contact_id", 3], ["description", "Gambgdling"], ["created_at", "2019-07-09 18:07:42.614818"], ["updated_at", "2019-07-09 18:07:42.614818"]]
+  ↳ app/controllers/activities_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/activities_controller.rb:15
+Completed 201 Created in 23ms (Views: 0.3ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/contacts/3/activities/1" for 127.0.0.1 at 2019-07-09 15:07:51 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"1", "activity"=>{}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+  [1m[36mActivity Load (0.5ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 15:07:55 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/3/activities/4" for 127.0.0.1 at 2019-07-09 15:08:00 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"4", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/3/activities/4" for 127.0.0.1 at 2019-07-09 15:11:43 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"4", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/contacts/3" for 127.0.0.1 at 2019-07-09 15:11:47 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"3", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:4
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/3" for 127.0.0.1 at 2019-07-09 15:12:42 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"3", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/contacts/34" for 127.0.0.1 at 2019-07-09 15:12:48 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"34", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/3" for 127.0.0.1 at 2019-07-09 15:13:06 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"3", "contact"=>{}}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 15:13:46 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Lennon"], ["cell_phone", "454345"], ["zip_code", 12345], ["created_at", "2019-07-09 18:13:46.674748"], ["updated_at", "2019-07-09 18:13:46.674748"]]
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 201 Created in 7ms (Views: 0.4ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 15:13:56 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"John", "last_gdname"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"John", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 15:19:42 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 15:19:56 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"6", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 15:20:01 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"7", "contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 15:24:39 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:2: syntax error, unexpected '(', expecting keyword_end
+  before_action :set_contact(params[:id]), only: [:show, :u
+                             ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:2: syntax error, unexpected ')', expecting keyword_end
+tion :set_contact(params[:id]), only: [:show, :update, :dest
+                              ^):
+  
+app/controllers/contacts_controller.rb:2: syntax error, unexpected '(', expecting keyword_end
+app/controllers/contacts_controller.rb:2: syntax error, unexpected ')', expecting keyword_end
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 15:25:40 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:3: syntax error, unexpected '(', expecting keyword_end
+    :set_contact(params[:id])
+                 ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:3: syntax error, unexpected ')', expecting keyword_end
+    :set_contact(params[:id])
+                             ^):
+  
+app/controllers/contacts_controller.rb:3: syntax error, unexpected '(', expecting keyword_end
+app/controllers/contacts_controller.rb:3: syntax error, unexpected ')', expecting keyword_end
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 15:26:07 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error }, status: :unprocessable_entit
+                              ^):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 15:28:12 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error }, status: :unprocessable_entit
+                              ^):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 15:28:31 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error }, status: :unprocessable_entit
+                              ^):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 15:29:19 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error }, status: :unprocessable_entit
+                              ^):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 15:29:56 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts" for 127.0.0.1 at 2019-07-09 15:30:28 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 15:30:35 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"6", "contact"=>{}}
+  [1m[36mContact Load (0.8ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 15:30:39 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"65", "contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 65], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:49:13 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:50: syntax error, unexpected ':', expecting '}'
+turn not_found { "contact_id": [ "does not exist." ] } if @c
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:50: syntax error, unexpected '}', expecting keyword_end
+t_id": [ "does not exist." ] } if @contact.nil?
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+er json: { "Errors": { error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/contacts_controller.rb:50: syntax error, unexpected ':', expecting '}'
+app/controllers/contacts_controller.rb:50: syntax error, unexpected '}', expecting keyword_end
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:50:33 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:50: syntax error, unexpected ':', expecting '}'
+turn not_found { "contact_id": [ "does not exist." ] } 
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:50: syntax error, unexpected '}', expecting keyword_end
+t_id": [ "does not exist." ] } 
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+er json: { "Errors": { error } }, status: :unprocessable_ent
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/contacts_controller.rb:50: syntax error, unexpected ':', expecting '}'
+app/controllers/contacts_controller.rb:50: syntax error, unexpected '}', expecting keyword_end
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:51:06 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:50: void value expression
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+er json: { "Errors": { error } }, status: :unprocessable_ent
+                              ^
+/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/contacts_controller.rb:50: void value expression
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:56: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:51:46 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+er json: { "Errors": { error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:52:08 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+id": [ "does not exist." ] } } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+Started GET "/contacts/65" for 127.0.0.1 at 2019-07-09 16:52:19 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 16:52:50 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+r json: { "Errors": { @error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/application_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/contacts_controller.rb:1:in `<main>'
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 16:53:50 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"6", "contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 15ms (Views: 0.5ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/contacts/66" for 127.0.0.1 at 2019-07-09 16:53:58 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"66", "contact"=>{}}
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 66], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contacts/66" for 127.0.0.1 at 2019-07-09 16:54:30 -0300
+  
+SyntaxError (/Users/camilo/Documents/Dev/Rails/contacts_api/app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+er json: { "Errors": { error } }, status: :unprocessable_ent
+                              ^):
+  
+app/controllers/contacts_controller.rb:54: syntax error, unexpected '}', expecting =>
+Started GET "/contacts/66" for 127.0.0.1 at 2019-07-09 16:54:52 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"66", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 66], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/contacts/66" for 127.0.0.1 at 2019-07-09 16:55:25 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"66", "contact"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 66], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/contacts/6" for 127.0.0.1 at 2019-07-09 16:55:41 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"6", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/contacts/64" for 127.0.0.1 at 2019-07-09 16:55:49 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"64", "contact"=>{}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 64], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:49
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/contacts/64" for 127.0.0.1 at 2019-07-09 16:57:25 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/contacts/64"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/contacts/64" for 127.0.0.1 at 2019-07-09 16:57:36 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/contacts/64"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 16:57:52 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[36mContact Create (0.9ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Lennon"], ["cell_phone", "454345"], ["zip_code", 12345], ["created_at", "2019-07-09 19:57:52.141490"], ["updated_at", "2019-07-09 19:57:52.141490"]]
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 201 Created in 18ms (Views: 0.3ms | ActiveRecord: 10.2ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 16:58:00 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"John", "last_wryname"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"John", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/contacts" for 127.0.0.1 at 2019-07-09 16:58:31 -0300
+  
+ActionController::RoutingError (No route matches [PATCH] "/contacts"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/contacts/7" for 127.0.0.1 at 2019-07-09 16:58:58 -0300
+Processing by ContactsController#update as JSON
+  Parameters: {"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "id"=>"7", "contact"=>{"first_name"=>"John", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:26
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/contacts/7" for 127.0.0.1 at 2019-07-09 16:59:07 -0300
+Processing by ContactsController#update as JSON
+  Parameters: {"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "id"=>"7", "contact"=>{"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:26
+  [1m[36mContact Update (0.4ms)[0m  [1m[33mUPDATE "contacts" SET "first_name" = $1, "updated_at" = $2 WHERE "contacts"."id" = $3[0m  [["first_name", "Johgrwn"], ["updated_at", "2019-07-09 19:59:07.755263"], ["id", 7]]
+  ↳ app/controllers/contacts_controller.rb:26
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:26
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/contacts/7" for 127.0.0.1 at 2019-07-09 16:59:14 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"7", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 17:03:32 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.1ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+  [1m[36mActivity Load (0.4ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/contacts/3/activities/7" for 127.0.0.1 at 2019-07-09 17:03:36 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Filter chain halted as :set_activity rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/37/activities/7" for 127.0.0.1 at 2019-07-09 17:03:42 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"37", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/3/activities/7" for 127.0.0.1 at 2019-07-09 17:03:49 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+  [1m[36mActivity Load (0.3ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:49
+Filter chain halted as :set_activity rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/3/activities/7" for 127.0.0.1 at 2019-07-09 17:04:14 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+  [1m[36mActivity Load (0.4ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+Filter chain halted as :set_activity rendered or redirected
+Completed 422 Unprocessable Entity in 16ms (Views: 0.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/contacts/36/activities/7" for 127.0.0.1 at 2019-07-09 17:04:20 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"36", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contacts/36/activities/7" for 127.0.0.1 at 2019-07-09 17:04:23 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"36", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/36/activities/7" for 127.0.0.1 at 2019-07-09 17:04:35 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"36", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/contacts/36/activities/7" for 127.0.0.1 at 2019-07-09 17:06:11 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"36", "id"=>"7", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 404 Not Found in 5ms (Views: 0.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/contacts/36/activities/4" for 127.0.0.1 at 2019-07-09 17:06:28 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"36", "id"=>"4", "activity"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/3/activities/2" for 127.0.0.1 at 2019-07-09 17:06:33 -0300
+Processing by ActivitiesController#show as JSON
+  Parameters: {"contact_id"=>"3", "id"=>"2", "activity"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+  [1m[36mActivity Load (0.4ms)[0m  [1m[34mSELECT  "activities".* FROM "activities" WHERE "activities"."contact_id" = $1 AND "activities"."id" = $2 LIMIT $3[0m  [["contact_id", 3], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:48
+Completed 200 OK in 17ms (Views: 0.5ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 17:38:33 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[36mContact Create (0.7ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Johgrwn"], ["last_name", "Lennon"], ["cell_phone", "454345"], ["zip_code", 12345], ["created_at", "2019-07-09 20:38:33.499575"], ["updated_at", "2019-07-09 20:38:33.499575"]]
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 22:05:25 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[36mContact Create (0.8ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Johgrwn"], ["last_name", "Lennon"], ["cell_phone", "454345"], ["zip_code", 12345], ["created_at", "2019-07-10 01:05:25.026420"], ["updated_at", "2019-07-10 01:05:25.026420"]]
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 201 Created in 9ms (Views: 1.0ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-09 22:05:34 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345, "contact"=>{"first_name"=>"Johgrwn", "last_name"=>"Lennon", "cell_phone"=>"454345", "zip_code"=>12345}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[36mContact Create (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Johgrwn"], ["last_name", "Lennon"], ["cell_phone", "454345"], ["zip_code", 12345], ["created_at", "2019-07-10 01:05:34.113887"], ["updated_at", "2019-07-10 01:05:34.113887"]]
+  ↳ app/controllers/contacts_controller.rb:17
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:17
+Completed 201 Created in 4ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/contacts/2" for 127.0.0.1 at 2019-07-09 22:10:21 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"2", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.5ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-1"], ["last_name", "doe-1"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 14:53:32.435730"], ["updated_at", "2019-07-10 14:53:32.435730"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Destroy (1.0ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Destroy (2.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.8ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (1.6ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.8ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.8ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.6ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mContact Destroy (0.7ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.9ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 3]]
+  [1m[36mActivity Destroy (0.3ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 2]]
+  [1m[36mActivity Destroy (0.2ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 3]]
+  [1m[36mActivity Destroy (0.1ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 4]]
+  [1m[36mActivity Destroy (0.2ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 5]]
+  [1m[36mActivity Destroy (0.1ms)[0m  [1m[31mDELETE FROM "activities" WHERE "activities"."id" = $1[0m  [["id", 6]]
+  [1m[36mContact Destroy (0.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 4]]
+  [1m[36mContact Destroy (0.3ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 5]]
+  [1m[36mContact Destroy (0.2ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 6]]
+  [1m[36mContact Destroy (0.2ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 7]]
+  [1m[36mContact Destroy (0.2ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 8]]
+  [1m[36mContact Destroy (0.3ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 9]]
+  [1m[36mContact Destroy (0.1ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.2ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 10]]
+  [1m[36mContact Destroy (0.3ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActivity Load (0.1ms)[0m  [1m[34mSELECT "activities".* FROM "activities" WHERE "activities"."contact_id" = $1[0m  [["contact_id", 11]]
+  [1m[36mContact Destroy (0.2ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.8ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-1"], ["last_name", "doe-1"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 20:45:45.944456"], ["updated_at", "2019-07-10 20:45:45.944456"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-2"], ["last_name", "doe-2"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 20:45:45.962058"], ["updated_at", "2019-07-10 20:45:45.962058"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (1.0ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-3"], ["last_name", "doe-3"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 20:45:45.965475"], ["updated_at", "2019-07-10 20:45:45.965475"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-4"], ["last_name", "doe-4"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 20:45:45.971309"], ["updated_at", "2019-07-10 20:45:45.971309"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "cell_phone", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "joe-5"], ["last_name", "doe-5"], ["cell_phone", "151201200"], ["zip_code", 1540], ["created_at", "2019-07-10 20:45:45.975009"], ["updated_at", "2019-07-10 20:45:45.975009"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" ORDER BY "contacts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/contacts/52/activities" for 127.0.0.1 at 2019-07-10 18:22:49 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ActivitiesController#create as JSON
+  Parameters: {"description"=>"geeg", "contact_id"=>"52", "activity"=>{"description"=>"geeg"}}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/controllers/activities_controller.rb:43
+Filter chain halted as :set_contact rendered or redirected
+Completed 404 Not Found in 9ms (Views: 0.2ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-07-10 19:53:23 -0300
+Processing by ContactsController#create as JSON
+  Parameters: {"description"=>"geeg", "contact"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 8.3ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: contact):
+  
+app/controllers/contacts_controller.rb:42:in `contact_params'
+app/controllers/contacts_controller.rb:15:in `create'
+Started GET "/contacts" for 127.0.0.1 at 2019-07-10 19:53:27 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (1.0ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 21ms (Views: 10.8ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-10 19:53:49 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1", "contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+Filter chain halted as :set_contact rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/contacts" for 127.0.0.1 at 2019-07-10 19:54:02 -0300
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contacts/12" for 127.0.0.1 at 2019-07-10 19:54:09 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"12", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
