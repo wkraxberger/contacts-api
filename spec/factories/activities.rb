@@ -1,6 +1,6 @@
-FactoryBot.define do 
+FactoryBot.define do
   factory :activity do
-    description { 'Swimming...' }
+    description { 'Swimming' }
     contact
   end
 end

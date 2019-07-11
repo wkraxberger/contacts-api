@@ -2584,3 +2584,115 @@ Processing by ContactsController#show as JSON
 Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/contacts" for 127.0.0.1 at 2019-07-10 19:59:49 -0300
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 3.2ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateActivities (20190709055704)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (14.3ms)[0m  [1m[35mDROP TABLE "activities"[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20190709055704"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (10.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateContacts (20190709055056)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "contacts"[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20190709055056"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateContacts (20190709055056)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "cell_phone" character varying NOT NULL, "zip_code" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190709055056_create_contacts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190709055056"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Migrating to CreateActivities (20190709055704)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "activities" ("id" bigserial primary key, "contact_id" bigint, "description" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4f81fb35a0"
+FOREIGN KEY ("contact_id")
+  REFERENCES "contacts" ("id")
+)[0m
+  ↳ db/migrate/20190709055704_create_activities.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_activities_on_contact_id" ON "activities"  ("contact_id")[0m
+  ↳ db/migrate/20190709055704_create_activities.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190709055704"]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5968045350150673755)[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/bin/rake:22
+Started GET "/contacts" for 127.0.0.1 at 2019-07-10 20:01:44 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/camilo/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ContactsController#index as JSON
+  Parameters: {"contact"=>{}}
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/contacts_controller.rb:5
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/contacts/1" for 127.0.0.1 at 2019-07-10 20:01:51 -0300
+Processing by ContactsController#show as JSON
+  Parameters: {"id"=>"1", "contact"=>{}}
+  [1m[36mContact Load (0.2ms)[0m  [1m[34mSELECT  "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contacts_controller.rb:46
+Filter chain halted as :set_contact rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+

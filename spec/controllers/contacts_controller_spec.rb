@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe ContactsController do
   before do
-    Contact.destroy_all
     create_list(:contact, 5)
   end
   let(:contact_id) { Contact.first.id }
@@ -67,9 +66,12 @@ describe ContactsController do
     subject { get :index }
 
     context 'when there are contacts' do
-      it 'returns all contacts and status 200' do
+      it 'returns all contacts' do
         subject
         expect(json_response.count).to eq 5
+      end
+
+      it 'returns status 200' do
         expect(subject.status).to eq 200
       end
     end
@@ -77,9 +79,12 @@ describe ContactsController do
     context 'when there are no contacts' do
       before { Contact.destroy_all }
 
-      it 'returns no contact and status 200' do
+      it 'returns no contact' do
         subject
         expect(json_response.count).to be_zero
+      end
+
+      it 'returns status 200' do
         expect(subject.status).to eq 200
       end
     end

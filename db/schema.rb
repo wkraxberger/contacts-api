@@ -17,17 +17,17 @@ ActiveRecord::Schema.define(version: 2019_07_09_055704) do
 
   create_table "activities", force: :cascade do |t|
     t.bigint "contact_id"
-    t.string "description"
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_activities_on_contact_id"
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "cell_phone"
-    t.integer "zip_code"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "cell_phone", null: false
+    t.integer "zip_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
